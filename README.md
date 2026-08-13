@@ -1,54 +1,46 @@
 # Genetic Knapsack Optimizer
 
-Solución reproducible del problema de la mochila entera acotada mediante un
-algoritmo genético. Cada tipo de objeto puede aparecer entre 0 y 3 veces.
+A reproducible genetic algorithm for a bounded integer knapsack problem. Each item type can appear from zero to three times.
 
-> **English summary:** A deterministic, testable genetic algorithm for a
-> bounded integer knapsack problem, including an exhaustive solver used as a
-> correctness baseline.
+## Problem
 
-## Problema
-
-Maximizar:
+Maximize:
 
 ```text
 Z = 4x1 + 5x2 + 6x3 + 3x4
 ```
 
-Sujeto a:
+Subject to:
 
 ```text
 7x1 + 6x2 + 8x3 + 2x4 <= 60
 0 <= xi <= 3
 ```
 
-El repositorio mejora la práctica original de tres maneras:
+The portfolio version improves the original exercise in three ways:
 
-- usa una semilla configurable para reproducibilidad;
-- conserva élites para no perder la mejor solución;
-- compara el resultado evolutivo con una búsqueda exhaustiva.
+- A configurable random seed makes runs reproducible.
+- Elitism prevents the best solution from being lost between generations.
+- An exhaustive solver provides a correctness baseline.
 
-La solución exacta de referencia es `(2, 3, 3, 2)`, con valor `47` y peso
-`60`.
+The exact reference solution is `(2, 3, 3, 2)`, with value `47` and weight `60`.
 
-## Ejecutar
+## Run
 
-Requiere Python 3.11 o superior y no necesita dependencias externas.
+The project requires Python 3.11 or newer and has no external dependencies.
 
 ```powershell
 $env:PYTHONPATH='src'
 python -m knapsack.cli
 ```
 
-## Pruebas
+## Tests
 
 ```powershell
 $env:PYTHONPATH='src'
 python -m unittest discover -s tests -v
 ```
 
-## Alcance
+## Scope
 
-El algoritmo está diseñado como demostración educativa. Para instancias
-grandes conviene incorporar reparación de restricciones, operadores
-especializados y comparación con programación dinámica.
+This is an educational implementation. Larger instances would benefit from constraint-repair operators, specialized crossover and mutation strategies, and comparison with dynamic programming.
